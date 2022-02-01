@@ -5,7 +5,7 @@ license="MIT"
 
 [[mods]] 
 modId="unusualfishmod" 
-version="0.2.0"
+version="0.2.1"
 displayName="Unusual Fish Mod" 
 logoFile="examplemod.png" #optional
 credits="Thanks to Birdbasket and rusty_coconut for textures! Thanks to HugoMage for helping with code!"

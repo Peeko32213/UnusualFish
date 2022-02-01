@@ -1,13 +1,7 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.peeko32213.unusualfishmod.UnusualFishMod;
-import com.peeko32213.unusualfishmod.client.renderer.model.AeroMonoModel;
-import com.peeko32213.unusualfishmod.client.renderer.model.AhmarIdolModel;
-import com.peeko32213.unusualfishmod.client.renderer.model.MudPigModel;
 import com.peeko32213.unusualfishmod.client.renderer.model.SeaPancakeModel;
-import com.peeko32213.unusualfishmod.common.entity.AeroMonoEntity;
-import com.peeko32213.unusualfishmod.common.entity.AhmarIdolEntity;
-import com.peeko32213.unusualfishmod.common.entity.MudPigEntity;
 import com.peeko32213.unusualfishmod.common.entity.SeaPancakeEntity;
 
 import net.minecraft.client.renderer.entity.MobRenderer;

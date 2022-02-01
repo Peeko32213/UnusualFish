@@ -1,9 +1,7 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.peeko32213.unusualfishmod.UnusualFishMod;
-import com.peeko32213.unusualfishmod.client.renderer.model.AeroMonoModel;
 import com.peeko32213.unusualfishmod.client.renderer.model.BumpfaceModel;
-import com.peeko32213.unusualfishmod.common.entity.AeroMonoEntity;
 import com.peeko32213.unusualfishmod.common.entity.BumpfaceEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;

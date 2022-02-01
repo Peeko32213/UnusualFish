@@ -1,9 +1,7 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.peeko32213.unusualfishmod.UnusualFishMod;
-import com.peeko32213.unusualfishmod.client.renderer.model.AeroMonoModel;
 import com.peeko32213.unusualfishmod.client.renderer.model.ClownthornSharkModel;
-import com.peeko32213.unusualfishmod.common.entity.AeroMonoEntity;
 import com.peeko32213.unusualfishmod.common.entity.ClownthornSharkEntity;
 
 import net.minecraft.client.renderer.entity.MobRenderer;

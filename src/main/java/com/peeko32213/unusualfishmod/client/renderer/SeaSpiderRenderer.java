@@ -1,9 +1,7 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.peeko32213.unusualfishmod.UnusualFishMod;
-import com.peeko32213.unusualfishmod.client.renderer.model.SailorBarbModel;
 import com.peeko32213.unusualfishmod.client.renderer.model.SeaSpiderModel;
-import com.peeko32213.unusualfishmod.common.entity.SailorBarbEntity;
 import com.peeko32213.unusualfishmod.common.entity.SeaSpiderEntity;
 
 import net.minecraft.client.renderer.entity.MobRenderer;

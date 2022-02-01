@@ -61,6 +61,17 @@ public class AhmarIdolEntity extends WaterAnimal {
 		});
 	}
 
+	public void aiStep() {
+		if (!this.isInWater() && this.onGround && this.verticalCollision) {
+			this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double)0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
+			this.onGround = false;
+			this.hasImpulse = true;
+			this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
+		}
+
+		super.aiStep();
+	}
+
 	protected PathNavigation createNavigation(Level p_27480_) {
 		return new WaterBoundPathNavigation(this, p_27480_);
 	}

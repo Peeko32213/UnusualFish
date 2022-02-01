@@ -59,4 +59,6 @@ public class RhinoTetraEntity  extends AbstractSchoolingFish {
 		return WaterAnimal.checkSurfaceWaterAnimalSpawnRules(entity, levelAccess, spawnType, pos, random);
 	}
 
+
+
 }

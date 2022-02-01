@@ -1,27 +1,23 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
-import com.peeko32213.unusualfishmod.UnusualFishMod;
+
 import com.peeko32213.unusualfishmod.client.renderer.model.BlackcapSnailModel;
 import com.peeko32213.unusualfishmod.common.entity.BlackCapSnailEntity;
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-public class BlackcapSnailRenderer<Type extends BlackCapSnailEntity>
-extends MobRenderer<Type, BlackcapSnailModel<Type>> {
+public class BlackcapSnailRenderer extends MobRenderer<BlackCapSnailEntity, BlackcapSnailModel<BlackCapSnailEntity>> {
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/blackcapsnail.png");
 
-private static final ResourceLocation TEXTURE = new ResourceLocation(UnusualFishMod.MODID,
-	"textures/entities/blackcapsnail.png");
+	public BlackcapSnailRenderer(EntityRendererProvider.Context renderManagerIn) {
+		super(renderManagerIn, new BlackcapSnailModel<>(renderManagerIn.bakeLayer(BlackcapSnailModel.LAYER_LOCATION)), 0.2F);
+		this.shadowRadius = 0.6F;
+	}
 
-public BlackcapSnailRenderer(Context context) {
-super(context, new BlackcapSnailModel<>(context.bakeLayer(BlackcapSnailModel.LAYER_LOCATION)), 0.4f);
-
-}
-
-@Override
-public ResourceLocation getTextureLocation(Type entity) {
-
-return TEXTURE;
-}
+	@Override
+	public ResourceLocation getTextureLocation(BlackCapSnailEntity entity) {
+		return TEXTURE;
+	}
 
 }

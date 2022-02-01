@@ -1,27 +1,24 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
-import com.peeko32213.unusualfishmod.UnusualFishMod;
+
 import com.peeko32213.unusualfishmod.client.renderer.model.TigerPufferModel;
 import com.peeko32213.unusualfishmod.common.entity.TigerPufferEntity;
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-public class TigerPufferRenderer<Type extends TigerPufferEntity>
-extends MobRenderer<Type, TigerPufferModel<Type>> {
+public class TigerPufferRenderer extends MobRenderer<TigerPufferEntity, TigerPufferModel<TigerPufferEntity>> {
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/tigerpuffer.png");
 
-private static final ResourceLocation TEXTURE = new ResourceLocation(UnusualFishMod.MODID,
-	"textures/entities/tigerpuffer.png");
+	public TigerPufferRenderer(EntityRendererProvider.Context renderManagerIn) {
+		super(renderManagerIn, new TigerPufferModel<>(renderManagerIn.bakeLayer(TigerPufferModel.LAYER_LOCATION)), 0.2F);
+		this.shadowRadius = 0.6F;
+	}
 
-public TigerPufferRenderer(Context context) {
-super(context, new TigerPufferModel<>(context.bakeLayer(TigerPufferModel.LAYER_LOCATION)), 0.4f);
-
-}
-
-@Override
-public ResourceLocation getTextureLocation(Type entity) {
-
-return TEXTURE;
-}
+	@Override
+	public ResourceLocation getTextureLocation(TigerPufferEntity entity) {
+		return TEXTURE;
+	}
 
 }
+

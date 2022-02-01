@@ -1,37 +1,38 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
-import com.peeko32213.unusualfishmod.UnusualFishMod;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 import com.peeko32213.unusualfishmod.client.renderer.model.AeroMonoModel;
 import com.peeko32213.unusualfishmod.common.entity.AeroMonoEntity;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
-public class AeroMonoRenderer<Type extends AeroMonoEntity>
-extends MobRenderer<Type, AeroMonoModel<Type>> {
+public class AeroMonoRenderer extends MobRenderer<AeroMonoEntity, AeroMonoModel<AeroMonoEntity>> {
+    protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/aeromono.png");
 
-private static final ResourceLocation TEXTURE = new ResourceLocation(UnusualFishMod.MODID,
-	"textures/entities/aeromono.png");
+    public AeroMonoRenderer(EntityRendererProvider.Context renderManagerIn) {
+        super(renderManagerIn, new AeroMonoModel<>(renderManagerIn.bakeLayer(AeroMonoModel.LAYER_LOCATION)), 0.2F);
+        this.shadowRadius = 0.6F;
+    }
 
-public AeroMonoRenderer(Context context) {
-super(context, new AeroMonoModel<>(context.bakeLayer(AeroMonoModel.LAYER_LOCATION)), 0.4f);
 
-}
-	//this code right here is what you insert when you want to give side flop to your fish \/
-	 protected void setupRotations(AeroMonoEntity p_116226_, PoseStack p_116227_, float p_116228_, float p_116229_, float p_116230_) {
-      super.setupRotations(p_116226_, p_116227_, p_116228_, p_116229_, p_116230_);
-      float f = 4.3F * Mth.sin(0.6F * p_116228_);
-      p_116227_.mulPose(Vector3f.YP.rotationDegrees(f));
-      if (!p_116226_.isInWater()) {
-         p_116227_.translate((double)0.2F, (double)0.1F, 0.0D);
-         p_116227_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-      }
 
-   }
-@Override
-public ResourceLocation getTextureLocation(Type entity) {
+    @Override
+    public ResourceLocation getTextureLocation(AeroMonoEntity entity) {
+        return TEXTURE;
+    }
 
-return TEXTURE;
-}
+    //this code right here is what you insert when you want to give side flop to your fish \/
+    protected void setupRotations(AeroMonoEntity p_116226_, PoseStack p_116227_, float p_116228_, float p_116229_, float p_116230_) {
+        super.setupRotations(p_116226_, p_116227_, p_116228_, p_116229_, p_116230_);
+        float f = 4.3F * Mth.sin(0.6F * p_116228_);
+        p_116227_.mulPose(Vector3f.YP.rotationDegrees(f));
+        if (!p_116226_.isInWater()) {
+            p_116227_.translate((double) 0.2F, (double) 0.1F, 0.0D);
+            p_116227_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+        }
+    }
 
 }

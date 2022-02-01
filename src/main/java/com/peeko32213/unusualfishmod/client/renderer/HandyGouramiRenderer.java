@@ -1,38 +1,39 @@
 package com.peeko32213.unusualfishmod.client.renderer;
 
-import com.peeko32213.unusualfishmod.UnusualFishMod;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 import com.peeko32213.unusualfishmod.client.renderer.model.HandyGouramiModel;
 import com.peeko32213.unusualfishmod.common.entity.HandyGouramiEntity;
 
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
-public class HandyGouramiRenderer<Type extends HandyGouramiEntity> 
-		extends MobRenderer<Type, HandyGouramiModel<Type>> {
+public class HandyGouramiRenderer extends MobRenderer<HandyGouramiEntity, HandyGouramiModel<HandyGouramiEntity>> {
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/handygourami.png");
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(UnusualFishMod.MODID,
-			"textures/entities/handygourami.png");
-
-	public HandyGouramiRenderer(Context context) {
-		super(context, new HandyGouramiModel<>(context.bakeLayer(HandyGouramiModel.LAYER_LOCATION)), 0.4f);
-
+	public HandyGouramiRenderer(EntityRendererProvider.Context renderManagerIn) {
+		super(renderManagerIn, new HandyGouramiModel<>(renderManagerIn.bakeLayer(HandyGouramiModel.LAYER_LOCATION)), 0.2F);
+		this.shadowRadius = 0.6F;
 	}
-		//this code right here is what you insert when you want to give side flop to your fish \/
-	 protected void setupRotations(HandyGouramiEntity p_116226_, PoseStack p_116227_, float p_116228_, float p_116229_, float p_116230_) {
-      super.setupRotations(p_116226_, p_116227_, p_116228_, p_116229_, p_116230_);
-      float f = 4.3F * Mth.sin(0.6F * p_116228_);
-      p_116227_.mulPose(Vector3f.YP.rotationDegrees(f));
-      if (!p_116226_.isInWater()) {
-         p_116227_.translate((double)0.2F, (double)0.1F, 0.0D);
-         p_116227_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-      }
 
-   }
+
+
 	@Override
-	public ResourceLocation getTextureLocation(Type entity) {
-
+	public ResourceLocation getTextureLocation(HandyGouramiEntity entity) {
 		return TEXTURE;
+	}
+
+	//this code right here is what you insert when you want to give side flop to your fish \/
+	protected void setupRotations(HandyGouramiEntity p_116226_, PoseStack p_116227_, float p_116228_, float p_116229_, float p_116230_) {
+		super.setupRotations(p_116226_, p_116227_, p_116228_, p_116229_, p_116230_);
+		float f = 4.3F * Mth.sin(0.6F * p_116228_);
+		p_116227_.mulPose(Vector3f.YP.rotationDegrees(f));
+		if (!p_116226_.isInWater()) {
+			p_116227_.translate((double) 0.2F, (double) 0.1F, 0.0D);
+			p_116227_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+		}
 	}
 
 }

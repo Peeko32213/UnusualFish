@@ -19,7 +19,7 @@ import net.minecraft.world.level.LevelAccessor;
 
 import java.util.Random;
 
-public class SailorBarbEntity  extends AbstractSchoolingFish {
+public class SailorBarbEntity extends AbstractSchoolingFish {
 
 	public SailorBarbEntity(EntityType<? extends AbstractSchoolingFish> entityType, Level level) {
 		super(entityType, level);

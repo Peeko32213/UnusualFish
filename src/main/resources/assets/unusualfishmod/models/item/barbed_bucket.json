@@ -1,6 +1,6 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:items/bucket_of_placeholder"
+    "layer0" : "unusualfishmod:items/skate_bucket"
   }
 }

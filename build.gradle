@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.2.1'
+version = '0.2.3'
 group = 'com.peeko32213.unusualfishmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unusualfishmod'
 
@@ -76,7 +76,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Unusual Fish Mod",
                 "Specification-Vendor"    : "Peeko32213",
-                "Specification-Version"   : "0.2.1",
+                "Specification-Version"   : "0.2.3",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Peeko32213",

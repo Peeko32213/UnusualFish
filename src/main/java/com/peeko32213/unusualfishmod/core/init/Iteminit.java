@@ -116,6 +116,49 @@ public final class Iteminit {
 			() -> new ForgeSpawnEggItem(EntityInit.BUMPFACE , 0x404a7b, 0x779aa8,
 					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+	public static final RegistryObject<ForgeSpawnEggItem> DEEP_EGG = ITEMS.register("deep_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.DEEP_CRAWLER , 0x1a1825, 0x434751,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> WIZARD_EGG = ITEMS.register("wizard_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.WIZARD_JELLY , 0x1e134c, 0x8b55a6,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> PORCUPINE_EGG = ITEMS.register("porcupine_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.PORCUPINE_LOBSTA , 0x460121, 0x8d2c3f,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> TRUMPET_EGG = ITEMS.register("trumpet_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.TRUMPET_SQUID , 0x6a061a, 0xe9b142,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> MANTIS_EGG = ITEMS.register("mantis_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.FRESHWATER_MANTIS , 0x4b2f1a, 0x7c8b44,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> BARK_EGG = ITEMS.register("bark_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.BARK_ANGELFISH , 0x3b0e08, 0x6b3f21,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> SHOCKCAT_EGG = ITEMS.register("shockcat_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.SHOCKCAT , 0x222c58, 0x4595ba,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> THORN_EGG = ITEMS.register("thorn_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.THORN_SNAIL , 0x316b6e, 0x2e582d,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> KRABULON_EGG = ITEMS.register("krabulon_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.KALAPPA , 0x624051, 0x886d86,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> SKIPPER_EGG = ITEMS.register("skipper_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.LOBED_SKIPPER , 0x4b2618, 0x9e632f,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<ForgeSpawnEggItem> DRAGON_EGG = ITEMS.register("dragon_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityInit.DRAGON_BICHIR , 0x07331c, 0x3c7834,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	//Buckets
 
@@ -181,5 +224,29 @@ public final class Iteminit {
 
 	public static final RegistryObject<Item> BRICK_BUCKET = ITEMS.register("brick_bucket",
 			() -> new ItemModFishBucket(EntityInit.BRICK_SNAIL, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> DEEP_BUCKET = ITEMS.register("deep_bucket",
+			() -> new ItemModFishBucket(EntityInit.DEEP_CRAWLER, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> WIZARD_BUCKET = ITEMS.register("wizard_bucket",
+			() -> new ItemModFishBucket(EntityInit.WIZARD_JELLY, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> PORCUPINE_BUCKET = ITEMS.register("porcupine_bucket",
+			() -> new ItemModFishBucket(EntityInit.PORCUPINE_LOBSTA, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> MANTIS_BUCKET = ITEMS.register("mantis_bucket",
+			() -> new ItemModFishBucket(EntityInit.FRESHWATER_MANTIS, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> BARK_BUCKET = ITEMS.register("bark_bucket",
+			() -> new ItemModFishBucket(EntityInit.BARK_ANGELFISH, () -> Fluids.WATER, Items.BUCKET, false,
+					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+
+	public static final RegistryObject<Item> SKIPPER_BUCKET = ITEMS.register("skipper_bucket",
+			() -> new ItemModFishBucket(EntityInit.LOBED_SKIPPER, () -> Fluids.WATER, Items.BUCKET, false,
 					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
 }

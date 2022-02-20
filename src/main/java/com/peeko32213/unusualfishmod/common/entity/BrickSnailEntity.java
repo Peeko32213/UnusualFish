@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Bucketable;
@@ -34,7 +35,7 @@ import net.minecraft.world.level.LevelAccessor;
 import java.util.Random;
 
 public class BrickSnailEntity extends WaterAnimal implements Bucketable {
-    private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(SeaSpiderEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BrickSnailEntity.class, EntityDataSerializers.BOOLEAN);
 
 
     public BrickSnailEntity(EntityType<? extends BrickSnailEntity> type, Level world) {
@@ -50,6 +51,7 @@ public class BrickSnailEntity extends WaterAnimal implements Bucketable {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.3F));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 0.3F));
+        this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }
 
@@ -65,15 +67,32 @@ public class BrickSnailEntity extends WaterAnimal implements Bucketable {
     @Override
     public void handleAirSupply(int p_209207_1_) {
     }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(FROM_BUCKET, false);
+
+    }
+
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("Bucketed", this.fromBucket());
+    }
+
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.setFromBucket(compound.getBoolean("Bucketed"));
+    }
+
     @Override
     public boolean fromBucket() {
         return this.entityData.get(FROM_BUCKET);
     }
 
     @Override
-    public void setFromBucket(boolean p_203706_1_) {
-        this.entityData.set(FROM_BUCKET, p_203706_1_);
-
+    public void setFromBucket(boolean bucketed) {
+        this.entityData.set(FROM_BUCKET, bucketed);
     }
 
     @Override
@@ -83,14 +102,14 @@ public class BrickSnailEntity extends WaterAnimal implements Bucketable {
 
     }
 
+    public boolean requiresCustomPersistence() {
+        return super.requiresCustomPersistence() || this.fromBucket();
+    }
+
+
     @Override
     public void loadFromBucketTag(CompoundTag p_148832_) {
 
-    }
-
-    @Override
-    public ItemStack getBucketItemStack() {
-        return new ItemStack(Iteminit.BRICK_BUCKET.get());
     }
 
     @Override
@@ -100,6 +119,11 @@ public class BrickSnailEntity extends WaterAnimal implements Bucketable {
 
     protected InteractionResult mobInteract(Player p_27477_, InteractionHand p_27478_) {
         return Bucketable.bucketMobPickup(p_27477_, p_27478_, this).orElse(super.mobInteract(p_27477_, p_27478_));
+    }
+
+    @Override
+    public ItemStack getBucketItemStack() {
+        return new ItemStack(Iteminit.BRICK_BUCKET.get());
     }
 
     static class MoveHelperController extends MoveControl {

@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -51,7 +52,8 @@ public class SeaPancakeEntity extends WaterAnimal {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(6, new MeleeAttackGoal(this, (double) 1.0F, true));
 		this.goalSelector.addGoal(3, new BottomStrollGoal(this, 0.8F, 7));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, RhinoTetraEntity.class, false));
+		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, RhinoTetraEntity.class, true));
 		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
 		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 0.8D, 1) {
 			@Override

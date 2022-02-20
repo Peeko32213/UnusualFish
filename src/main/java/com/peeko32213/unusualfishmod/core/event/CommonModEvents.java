@@ -80,6 +80,40 @@ public class CommonModEvents {
 
 			SpawnPlacements.register(EntityInit.BLACKCAP_SNAIL.get(), SpawnPlacements.Type.IN_WATER,
 					Heightmap.Types.OCEAN_FLOOR, BlackCapSnailEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.DEEP_CRAWLER.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, DeepCrawlerEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.FRESHWATER_MANTIS.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, FreshwaterMantisEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.PORCUPINE_LOBSTA.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, PorcupineLobsterEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.WIZARD_JELLY.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, ManaJellyfishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.TRUMPET_SQUID.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, TrumpetSquidEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.BARK_ANGELFISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, BarkAngelfishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.DRAGON_BICHIR.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, DragonBichirEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.KALAPPA.get(), SpawnPlacements.Type.ON_GROUND,
+					Heightmap.Types.WORLD_SURFACE, KalappaEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.LOBED_SKIPPER.get(), SpawnPlacements.Type.ON_GROUND,
+					Heightmap.Types.WORLD_SURFACE, LobedSkipperEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.SHOCKCAT.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, ShockcatEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.THORN_SNAIL.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, ThornySnailEntity::canSpawn);
+
 		});
 
 	}
@@ -129,6 +163,27 @@ public class CommonModEvents {
 
 		event.put(EntityInit.BUMPFACE.get(), BumpfaceEntity.createAttributes().build());
 
+		event.put(EntityInit.DEEP_CRAWLER.get(), DeepCrawlerEntity.createAttributes().build());
+
+		event.put(EntityInit.WIZARD_JELLY.get(), ManaJellyfishEntity.createAttributes().build());
+
+		event.put(EntityInit.PORCUPINE_LOBSTA.get(), PorcupineLobsterEntity.createAttributes().build());
+
+		event.put(EntityInit.TRUMPET_SQUID.get(), TrumpetSquidEntity.createAttributes().build());
+
+		event.put(EntityInit.FRESHWATER_MANTIS.get(), FreshwaterMantisEntity.createAttributes().build());
+
+		event.put(EntityInit.BARK_ANGELFISH.get(), BarkAngelfishEntity.createAttributes().build());
+
+		event.put(EntityInit.SHOCKCAT.get(), ShockcatEntity.createAttributes().build());
+
+		event.put(EntityInit.THORN_SNAIL.get(), ThornySnailEntity.createAttributes().build());
+
+		event.put(EntityInit.KALAPPA.get(), KalappaEntity.createAttributes().build());
+
+		event.put(EntityInit.LOBED_SKIPPER.get(), LobedSkipperEntity.createAttributes().build());
+
+		event.put(EntityInit.DRAGON_BICHIR.get(), DragonBichirEntity.createAttributes().build());
 	}
 
 }

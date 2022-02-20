@@ -36,7 +36,7 @@ public class ZebraCornetfishEntity extends WaterAnimal {
         this.moveControl = new WaterMoveController(this, 1F);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
         this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-        this.maxUpStep = 1.0f;
+        this.maxUpStep = 0.9f;
     }
 
     public static AttributeSupplier.Builder createAttributes() {

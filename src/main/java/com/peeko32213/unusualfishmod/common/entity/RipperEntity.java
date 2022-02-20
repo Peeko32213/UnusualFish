@@ -29,7 +29,9 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 
 import java.util.Random;
@@ -43,7 +45,7 @@ public class RipperEntity extends WaterAnimal implements Bucketable {
 		this.moveControl = new WaterMoveController(this, 1F);
 		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-		this.maxUpStep = 1.0f;
+		this.maxUpStep = 0.9f;
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -110,16 +112,7 @@ public class RipperEntity extends WaterAnimal implements Bucketable {
 		return SoundEvents.COD_FLOP;
 	}
 
-	@Override
-	public boolean fromBucket() {
-		return this.entityData.get(FROM_BUCKET);
-	}
 
-	@Override
-	public void setFromBucket(boolean p_203706_1_) {
-		this.entityData.set(FROM_BUCKET, p_203706_1_);
-
-	}
 
 	@Override
 	public void saveToBucketTag(ItemStack bucket) {
@@ -129,21 +122,40 @@ public class RipperEntity extends WaterAnimal implements Bucketable {
 	}
 
 	@Override
-	public void tick() {
-		super.tick();
-		if (this.attackCooldown > 0) {
-			this.attackCooldown--;
-		}
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(FROM_BUCKET, false);
+
 	}
+
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.putBoolean("Bucketed", this.fromBucket());
+	}
+
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		this.setFromBucket(compound.getBoolean("Bucketed"));
+	}
+
+	@Override
+	public boolean fromBucket() {
+		return this.entityData.get(FROM_BUCKET);
+	}
+
+	@Override
+	public void setFromBucket(boolean bucketed) {
+		this.entityData.set(FROM_BUCKET, bucketed);
+	}
+
+	public boolean requiresCustomPersistence() {
+		return super.requiresCustomPersistence() || this.fromBucket();
+	}
+
 
 	@Override
 	public void loadFromBucketTag(CompoundTag p_148832_) {
 
-	}
-
-	@Override
-	public ItemStack getBucketItemStack() {
-		return new ItemStack(Iteminit.RIPPER_BUCKET.get());
 	}
 
 	@Override
@@ -155,8 +167,32 @@ public class RipperEntity extends WaterAnimal implements Bucketable {
 		return Bucketable.bucketMobPickup(p_27477_, p_27478_, this).orElse(super.mobInteract(p_27477_, p_27478_));
 	}
 
-	public static boolean canSpawn(EntityType<RipperEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random ) {
-		return WaterAnimal.checkSurfaceWaterAnimalSpawnRules(entity, levelAccess, spawnType, pos, random);
+	public boolean removeWhenFarAway(double d) {
+		return !this.fromBucket() && !this.hasCustomName();
+	}
+
+	@Override
+	public ItemStack getBucketItemStack() {
+		return new ItemStack(Iteminit.RIPPER_BUCKET.get());
+
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (this.attackCooldown > 0) {
+			this.attackCooldown--;
+		}
+	}
+
+	public static boolean canSpawn(EntityType<RipperEntity> entityType, ServerLevelAccessor iServerWorld, MobSpawnType reason, BlockPos pos, Random random) {
+		return reason == MobSpawnType.SPAWNER || iServerWorld.getBlockState(pos).getMaterial() == Material.WATER && iServerWorld.getBlockState(pos.above()).getMaterial() == Material.WATER && isLightLevelOk(pos, iServerWorld);
+	}
+
+	private static boolean isLightLevelOk(BlockPos pos, ServerLevelAccessor iServerWorld) {
+		float time = iServerWorld.getTimeOfDay(1.0F);
+		int light = iServerWorld.getMaxLocalRawBrightness(pos);
+		return light <= 4 && time > 0.27F && time <= 0.8F;
 	}
 
 

@@ -51,6 +51,7 @@ public class SeaSpiderEntity extends WaterAnimal implements Bucketable{
 
 	protected void registerGoals() {
 		this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.5F));
+		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 0.5F));
 		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
 	}
@@ -85,14 +86,30 @@ public class SeaSpiderEntity extends WaterAnimal implements Bucketable{
 	}
 
 	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(FROM_BUCKET, false);
+
+	}
+
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.putBoolean("Bucketed", this.fromBucket());
+	}
+
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		this.setFromBucket(compound.getBoolean("Bucketed"));
+	}
+
+	@Override
 	public boolean fromBucket() {
 		return this.entityData.get(FROM_BUCKET);
 	}
 
 	@Override
-	public void setFromBucket(boolean p_203706_1_) {
-		this.entityData.set(FROM_BUCKET, p_203706_1_);
-
+	public void setFromBucket(boolean bucketed) {
+		this.entityData.set(FROM_BUCKET, bucketed);
 	}
 
 	@Override
@@ -102,14 +119,14 @@ public class SeaSpiderEntity extends WaterAnimal implements Bucketable{
 
 	}
 
+	public boolean requiresCustomPersistence() {
+		return super.requiresCustomPersistence() || this.fromBucket();
+	}
+
+
 	@Override
 	public void loadFromBucketTag(CompoundTag p_148832_) {
 
-	}
-
-	@Override
-	public ItemStack getBucketItemStack() {
-		return new ItemStack(Iteminit.SEA_SPIDER_BUCKET.get());
 	}
 
 	@Override
@@ -119,6 +136,15 @@ public class SeaSpiderEntity extends WaterAnimal implements Bucketable{
 
 	protected InteractionResult mobInteract(Player p_27477_, InteractionHand p_27478_) {
 		return Bucketable.bucketMobPickup(p_27477_, p_27478_, this).orElse(super.mobInteract(p_27477_, p_27478_));
+	}
+
+	public boolean removeWhenFarAway(double d) {
+		return !this.fromBucket() && !this.hasCustomName();
+	}
+
+	@Override
+	public ItemStack getBucketItemStack() {
+		return new ItemStack(Iteminit.SEA_SPIDER_BUCKET.get());
 	}
 
 	static class MoveHelperController extends MoveControl {

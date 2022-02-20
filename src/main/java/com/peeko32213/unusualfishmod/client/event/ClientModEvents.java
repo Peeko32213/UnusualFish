@@ -40,6 +40,17 @@ public final class ClientModEvents {
 			event.registerLayerDefinition(TigerPufferModel.LAYER_LOCATION, TigerPufferModel::createBodyLayer);
 			event.registerLayerDefinition(BlackcapSnailModel.LAYER_LOCATION, BlackcapSnailModel::createBodyLayer);
 			event.registerLayerDefinition(BumpfaceModel.LAYER_LOCATION, BumpfaceModel::createBodyLayer);
+			event.registerLayerDefinition(DeepCrawlerModel.LAYER_LOCATION, DeepCrawlerModel::createBodyLayer);
+			event.registerLayerDefinition(ManaJellyfishModel.LAYER_LOCATION, ManaJellyfishModel::createBodyLayer);
+			event.registerLayerDefinition(PorcupineLobsterModel.LAYER_LOCATION, PorcupineLobsterModel::createBodyLayer);
+			event.registerLayerDefinition(TrumpetSquidModel.LAYER_LOCATION, TrumpetSquidModel::createBodyLayer);
+			event.registerLayerDefinition(FreshwaterMantisModel.LAYER_LOCATION, FreshwaterMantisModel::createBodyLayer);
+			event.registerLayerDefinition(BarkAngelfishModel.LAYER_LOCATION, BarkAngelfishModel::createBodyLayer);
+			event.registerLayerDefinition(ShockcatModel.LAYER_LOCATION, ShockcatModel::createBodyLayer);
+			event.registerLayerDefinition(ThornySnailModel.LAYER_LOCATION, ThornySnailModel::createBodyLayer);
+			event.registerLayerDefinition(KalappaModel.LAYER_LOCATION, KalappaModel::createBodyLayer);
+			event.registerLayerDefinition(LobedSkipperModel.LAYER_LOCATION, LobedSkipperModel::createBodyLayer);
+			event.registerLayerDefinition(DragonBichirModel.LAYER_LOCATION, DragonBichirModel::createBodyLayer);
 
 			
 		}
@@ -67,13 +78,18 @@ public final class ClientModEvents {
 			event.registerEntityRenderer(EntityInit.TIGER_PUFFER.get(), TigerPufferRenderer::new);
 			event.registerEntityRenderer(EntityInit.BLACKCAP_SNAIL.get(), BlackcapSnailRenderer::new);
 			event.registerEntityRenderer(EntityInit.BUMPFACE.get(), BumpfaceRenderer::new);
-
-
-
+			event.registerEntityRenderer(EntityInit.DEEP_CRAWLER.get(), DeepCrawlerRenderer::new);
+			event.registerEntityRenderer(EntityInit.WIZARD_JELLY.get(), ManaJellyfishRenderer::new);
+			event.registerEntityRenderer(EntityInit.PORCUPINE_LOBSTA.get(), PorcupineLobsterRenderer::new);
+			event.registerEntityRenderer(EntityInit.TRUMPET_SQUID.get(), TrumpetSquidRenderer::new);
+			event.registerEntityRenderer(EntityInit.FRESHWATER_MANTIS.get(), FreshwaterMantisRenderer::new);
+			event.registerEntityRenderer(EntityInit.BARK_ANGELFISH.get(), BarkAngelfishRenderer::new);
+			event.registerEntityRenderer(EntityInit.SHOCKCAT.get(), ShockcatRenderer::new);
+			event.registerEntityRenderer(EntityInit.THORN_SNAIL.get(), ThornySnailRenderer::new);
+			event.registerEntityRenderer(EntityInit.KALAPPA.get(), KalappaRenderer::new);
+			event.registerEntityRenderer(EntityInit.LOBED_SKIPPER.get(), LobedSkipperRenderer::new);
+			event.registerEntityRenderer(EntityInit.DRAGON_BICHIR.get(), DragonBichirRenderer::new);
 
 		}
-	
-		
-		
 }
 

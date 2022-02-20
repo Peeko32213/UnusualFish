@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BrickSnailRenderer extends MobRenderer<BrickSnailEntity, BrickSnailModel<BrickSnailEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/blackcapsnail.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/bricksnail.png");
 
 	public BrickSnailRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new BrickSnailModel<>(renderManagerIn.bakeLayer(BrickSnailModel.LAYER_LOCATION)), 0.2F);

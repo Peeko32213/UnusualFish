@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
@@ -40,7 +41,7 @@ public class SpindlefishEntity extends AbstractFish {
 		this.moveControl = new WaterMoveController(this, 1F);
 		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-		this.maxUpStep = 1.0f;
+		this.maxUpStep = 0.9f;
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -49,6 +50,7 @@ public class SpindlefishEntity extends AbstractFish {
 
 	protected void registerGoals() {
 		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
+		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 2.0D, 1) {
 			@Override
 			public boolean canUse() {

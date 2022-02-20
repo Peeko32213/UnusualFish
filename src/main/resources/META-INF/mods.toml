@@ -5,11 +5,11 @@ license="MIT"
 
 [[mods]] 
 modId="unusualfishmod" 
-version="0.2.1"
-displayName="Unusual Fish Mod" 
-logoFile="examplemod.png" #optional
-credits="Thanks to Birdbasket and rusty_coconut for textures! Thanks to HugoMage for helping with code!"
-authors="Peeko32213" 
+version="0.2.3"
+displayName= "Unusual Fish Mod"
+logoFile= "examplemod.png"
+credits= "Thanks to Birdbasket and rusty_coconut for textures! Thanks to HugoMage for helping with code!"
+authors= "Peeko32213"
 description='''
 A mod that adds a variety of new aquatic creatures and potion affects based around them.
 '''

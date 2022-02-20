@@ -106,6 +106,8 @@ public class TripleTwirlPlecoModel<Type extends Entity> extends EntityModel<Type
 		this.Whisker1.xRot = -f * 0.30F * Mth.sin(0.1F * ageInTicks);
 		this.Whisker2.xRot = -f * 0.30F * Mth.sin(0.1F * ageInTicks);
 
+
+
 	}
 
 	@Override

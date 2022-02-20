@@ -12,11 +12,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.WaterAnimal;
@@ -42,6 +38,7 @@ public class RedGiantSeaStarEntity extends WaterAnimal{
         this.goalSelector.addGoal(1, new PanicGoal(this, 0.3D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, SeaSpiderEntity.class, 20F, 0.3F, 1.0F));
 		this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.5F));
+		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
 		this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 0.2F));
 		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }

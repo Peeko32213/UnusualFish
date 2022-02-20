@@ -62,26 +62,37 @@ public class CommonForgeEvents {
         if (event.getName().equals(new ResourceLocation("minecraft:lukewarm_ocean"))) {
 
             event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
-                    new MobSpawnSettings.SpawnerData(EntityInit.SEA_PANCAKE.get(), 5, 1, 1));
-
-            event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
-                    new MobSpawnSettings.SpawnerData(EntityInit.CLOWNTHORN_SHARK.get(), 3, 1, 2));
+                    new MobSpawnSettings.SpawnerData(EntityInit.SEA_PANCAKE.get(), 10, 1, 1));
 
             event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
-                    new MobSpawnSettings.SpawnerData(EntityInit.BRICK_SNAIL.get(), 5, 2, 3));
+                    new MobSpawnSettings.SpawnerData(EntityInit.CLOWNTHORN_SHARK.get(), 1, 1, 2));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.PORCUPINE_LOBSTA.get(), 1, 3, 4));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.BRICK_SNAIL.get(), 8, 2, 3));
+
 
         }
 
         if (event.getName().equals(new ResourceLocation("minecraft:deep_lukewarm_ocean"))) {
 
             event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
-                    new MobSpawnSettings.SpawnerData(EntityInit.SEA_PANCAKE.get(), 5, 1, 2));
-
-            event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
-                    new MobSpawnSettings.SpawnerData(EntityInit.AHMAR_IDOL.get(), 10, 1, 2));
+                    new MobSpawnSettings.SpawnerData(EntityInit.SEA_PANCAKE.get(), 10, 1, 2));
 
             event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
-                    new MobSpawnSettings.SpawnerData(EntityInit.BRICK_SNAIL.get(), 5, 2, 3));
+                    new MobSpawnSettings.SpawnerData(EntityInit.AHMAR_IDOL.get(), 2, 1, 2));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.BRICK_SNAIL.get(), 8, 2, 3));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.PORCUPINE_LOBSTA.get(), 2, 4, 6));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.TRUMPET_SQUID.get(), 1, 1, 3));
+
 
         }
 
@@ -98,6 +109,9 @@ public class CommonForgeEvents {
 
             event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
                     new MobSpawnSettings.SpawnerData(EntityInit.BLACKCAP_SNAIL.get(), 5, 2, 3));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.THORN_SNAIL.get(), 2, 2, 3));
 
         }
 
@@ -118,6 +132,18 @@ public class CommonForgeEvents {
             event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
                     new MobSpawnSettings.SpawnerData(EntityInit.BLACKCAP_SNAIL.get(), 5, 2, 3));
 
+            event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
+                    new MobSpawnSettings.SpawnerData(EntityInit.FRESHWATER_MANTIS.get(), 1, 1, 2));
+
+            event.getSpawns().addSpawn(MobCategory.AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.LOBED_SKIPPER.get(), 5, 3, 4));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
+                    new MobSpawnSettings.SpawnerData(EntityInit.DRAGON_BICHIR.get(), 3, 1, 2));
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.BARK_ANGELFISH.get(), 5, 2, 3));
+
         }
 
         if (event.getName().equals(new ResourceLocation("minecraft:lush_caves"))) {
@@ -134,7 +160,29 @@ public class CommonForgeEvents {
 
             event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
                     new MobSpawnSettings.SpawnerData(EntityInit.BRICK_SNAIL.get(), 2, 2, 3));
+
         }
+
+        if (event.getName().equals(new ResourceLocation("minecraft:ocean"))) {
+
+            event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.WIZARD_JELLY.get(), 1, 3, 5));
+
+        }
+
+        if (event.getName().equals(new ResourceLocation("minecraft:mushroom_fields"))) {
+
+            event.getSpawns().addSpawn(MobCategory.AMBIENT,
+                    new MobSpawnSettings.SpawnerData(EntityInit.KALAPPA.get(), 5, 2, 3));
+
+        }
+
+        event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT,
+                new MobSpawnSettings.SpawnerData(EntityInit.DEEP_CRAWLER.get(), 1, 2, 3));
+
+        event.getSpawns().addSpawn(MobCategory.WATER_CREATURE,
+                new MobSpawnSettings.SpawnerData(EntityInit.SHOCKCAT.get(), 20, 1, 2));
+
 
     }
 

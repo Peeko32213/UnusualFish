@@ -1,6 +1,7 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:items/bucket_of_triple"
+    "layer0" : "unusualfishmod:items/lower_bucket",
+    "layer1" : "unusualfishmod:items/bucket_content/triple_twirl_pleco"
   }
 }

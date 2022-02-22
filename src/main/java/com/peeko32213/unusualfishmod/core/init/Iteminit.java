@@ -5,8 +5,6 @@ import com.peeko32213.unusualfishmod.common.item.ItemModFishBucket;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -163,90 +161,68 @@ public final class Iteminit {
 	//Buckets
 
 	public static final RegistryObject<Item> AERO_MONO_BUCKET = ITEMS.register("aero_mono_bucket",
-			() -> new ItemModFishBucket(EntityInit.AERO_MONO, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.AERO_MONO));
 
 	public static final RegistryObject<Item> RHINO_TETRA_BUCKET = ITEMS.register("rhino_tetra_bucket",
-			() -> new ItemModFishBucket(EntityInit.RHINO_TETRA, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.RHINO_TETRA));
 
 	public static final RegistryObject<Item> DUALITY_DAMSELFISH_BUCKET = ITEMS.register("duality_damselfish_bucket",
-			() -> new ItemModFishBucket(EntityInit.DUALITY_DAMSELFISH, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.DUALITY_DAMSELFISH));
 
 	public static final RegistryObject<Item> HANDY_GOURAMI_BUCKET = ITEMS.register("handy_gourami_bucket",
-			() -> new ItemModFishBucket(EntityInit.HANDY_GOURAMI, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.HANDY_GOURAMI));
 
 	public static final RegistryObject<Item> MOSSTHORN_BUCKET = ITEMS.register("mossthorn_bucket",
-			() -> new ItemModFishBucket(EntityInit.MOSSTHORN, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.MOSSTHORN));
 
 	public static final RegistryObject<Item> SAILOR_BARB_BUCKET = ITEMS.register("sailor_barb_bucket",
-			() -> new ItemModFishBucket(EntityInit.SAILOR_BARB, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.SAILOR_BARB));
 
 	public static final RegistryObject<Item> TRIPLE_TWIRL_PLECO_BUCKET = ITEMS.register("triple_twirl_pleco_bucket",
-			() -> new ItemModFishBucket(EntityInit.TRIPLE_TWIRL_PLECO, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.TRIPLE_TWIRL_PLECO));
 
 	public static final RegistryObject<Item> SPINDLEFISH_BUCKET = ITEMS.register("spindlefish_bucket",
-			() -> new ItemModFishBucket(EntityInit.SPINDLEFISH, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.SPINDLEFISH));
 
 	public static final RegistryObject<Item> RIPPER_BUCKET = ITEMS.register("ripper_bucket",
-			() -> new ItemModFishBucket(EntityInit.RIPPER, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.RIPPER));
 
 	public static final RegistryObject<Item> SEA_SPIDER_BUCKET = ITEMS.register("sea_spider_bucket",
-			() -> new ItemModFishBucket(EntityInit.SEA_SPIDER, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.SEA_SPIDER));
 
 	public static final RegistryObject<Item> CLOWNTHORN_BUCKET = ITEMS.register("clownthorn_bucket",
-			() -> new ItemModFishBucket(EntityInit.CLOWNTHORN_SHARK, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.CLOWNTHORN_SHARK));
 
 	public static final RegistryObject<Item> BARBED_BUCKET = ITEMS.register("barbed_bucket",
-			() -> new ItemModFishBucket(EntityInit.BARBED_SKATE, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.BARBED_SKATE));
 
 	public static final RegistryObject<Item> MUDPIG_BUCKET = ITEMS.register("mudpig_bucket",
-			() -> new ItemModFishBucket(EntityInit.MUD_PIG, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.MUD_PIG));
 
 	public static final RegistryObject<Item> BUMPFACE_BUCKET = ITEMS.register("bumpface_bucket",
-			() -> new ItemModFishBucket(EntityInit.BUMPFACE, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.BUMPFACE));
 
 	public static final RegistryObject<Item> BLACKCAP_BUCKET = ITEMS.register("blackcap_bucket",
-			() -> new ItemModFishBucket(EntityInit.BLACKCAP_SNAIL, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.BLACKCAP_SNAIL));
 
 	public static final RegistryObject<Item> BRICK_BUCKET = ITEMS.register("brick_bucket",
-			() -> new ItemModFishBucket(EntityInit.BRICK_SNAIL, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.BRICK_SNAIL));
 
 	public static final RegistryObject<Item> DEEP_BUCKET = ITEMS.register("deep_bucket",
-			() -> new ItemModFishBucket(EntityInit.DEEP_CRAWLER, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.DEEP_CRAWLER));
 
 	public static final RegistryObject<Item> WIZARD_BUCKET = ITEMS.register("wizard_bucket",
-			() -> new ItemModFishBucket(EntityInit.WIZARD_JELLY, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.WIZARD_JELLY));
 
 	public static final RegistryObject<Item> PORCUPINE_BUCKET = ITEMS.register("porcupine_bucket",
-			() -> new ItemModFishBucket(EntityInit.PORCUPINE_LOBSTA, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.PORCUPINE_LOBSTA));
 
 	public static final RegistryObject<Item> MANTIS_BUCKET = ITEMS.register("mantis_bucket",
-			() -> new ItemModFishBucket(EntityInit.FRESHWATER_MANTIS, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.FRESHWATER_MANTIS));
 
 	public static final RegistryObject<Item> BARK_BUCKET = ITEMS.register("bark_bucket",
-			() -> new ItemModFishBucket(EntityInit.BARK_ANGELFISH, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.BARK_ANGELFISH));
 
 	public static final RegistryObject<Item> SKIPPER_BUCKET = ITEMS.register("skipper_bucket",
-			() -> new ItemModFishBucket(EntityInit.LOBED_SKIPPER, () -> Fluids.WATER, Items.BUCKET, false,
-					new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+			() -> new ItemModFishBucket(EntityInit.LOBED_SKIPPER));
 }

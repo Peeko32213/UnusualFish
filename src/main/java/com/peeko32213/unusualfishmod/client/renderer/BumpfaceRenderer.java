@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.BumpfaceModel;
+import com.peeko32213.unusualfishmod.client.model.BumpfaceModel;
 import com.peeko32213.unusualfishmod.common.entity.BumpfaceEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class BumpfaceRenderer extends MobRenderer<BumpfaceEntity, BumpfaceModel<BumpfaceEntity>> {
-protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/bumpface.png");
+protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/bumpface.png");
 
 public BumpfaceRenderer(EntityRendererProvider.Context renderManagerIn) {
         super(renderManagerIn, new BumpfaceModel<>(renderManagerIn.bakeLayer(BumpfaceModel.LAYER_LOCATION)), 0.2F);

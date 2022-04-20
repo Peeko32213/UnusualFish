@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.SpindlefishModel;
+import com.peeko32213.unusualfishmod.client.model.SpindlefishModel;
 import com.peeko32213.unusualfishmod.common.entity.SpindlefishEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class SpindlefishRenderer extends MobRenderer<SpindlefishEntity, SpindlefishModel<SpindlefishEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/spindlefish.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/spindlefish.png");
 
 	public SpindlefishRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new SpindlefishModel<>(renderManagerIn.bakeLayer(SpindlefishModel.LAYER_LOCATION)), 0.2F);

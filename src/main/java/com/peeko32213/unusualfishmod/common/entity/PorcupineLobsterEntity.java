@@ -1,7 +1,7 @@
 package com.peeko32213.unusualfishmod.common.entity;
 
 
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -163,7 +163,7 @@ public class PorcupineLobsterEntity extends WaterAnimal implements Bucketable {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(Iteminit.PORCUPINE_BUCKET.get());
+        return new ItemStack(ItemInit.PORCUPINE_BUCKET.get());
 
     }
 

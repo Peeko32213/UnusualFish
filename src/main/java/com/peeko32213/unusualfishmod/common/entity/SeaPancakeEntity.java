@@ -5,8 +5,10 @@ import com.peeko32213.unusualfishmod.common.entity.util.BottomStrollGoal;
 
 import com.peeko32213.unusualfishmod.common.entity.util.WaterMoveController;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,10 +19,8 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -30,6 +30,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
 
@@ -38,23 +39,23 @@ public class SeaPancakeEntity extends WaterAnimal {
 
 	public SeaPancakeEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
 		super(entityType, level);
-		this.moveControl = new WaterMoveController(this, 1F);
+		this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
 		this.lookControl = new SmoothSwimmingLookControl(this, 10);
-		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-		this.maxUpStep = 1.0f;
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 30.0D).add(Attributes.MOVEMENT_SPEED, 0.8F)
-				.add(Attributes.ATTACK_DAMAGE, 2.0D);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 30.0D).add(Attributes.ATTACK_DAMAGE, 5.0D);
 	}
 
-	protected void registerGoals() {
-		this.goalSelector.addGoal(6, new MeleeAttackGoal(this, (double) 1.0F, true));
-		this.goalSelector.addGoal(3, new BottomStrollGoal(this, 0.8F, 7));
+	@Override
+	public void registerGoals() {
+		super.registerGoals();
+		this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 3.0D, true));
 		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, RhinoTetraEntity.class, true));
-		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
+		this.goalSelector.addGoal(3, new BottomStrollGoal(this, 0.8F, 7));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, TropicalFish.class, false));
+		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 0.8D, 1) {
 			@Override
 			public boolean canUse() {
@@ -69,22 +70,20 @@ public class SeaPancakeEntity extends WaterAnimal {
 		});
 	}
 
-	@Override
 	public void tick() {
 		super.tick();
+
 		if (this.attackCooldown > 0) {
 			this.attackCooldown--;
 		}
-	}
 
-	@Override
-	public void playerTouch(Player entity) {
-		super.playerTouch(entity);
-		if (!entity.isCreative() && this.attackCooldown == 0 && entity.level.getDifficulty() != Difficulty.PEACEFUL) {
-			entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3, false, false));
-			entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 2, false, false));
-			this.attackCooldown = 80;
+		if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
+			Vec3 vec3 = this.getViewVector(0.0F);
+			float f = Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+			float f1 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+
 		}
+
 	}
 
 	public void aiStep() {
@@ -97,6 +96,11 @@ public class SeaPancakeEntity extends WaterAnimal {
 
 		super.aiStep();
 	}
+
+	protected PathNavigation createNavigation(Level p_27480_) {
+		return new WaterBoundPathNavigation(this, p_27480_);
+	}
+
 
 	public SoundEvent getAmbientSound() {
 		return SoundEvents.COD_AMBIENT;
@@ -114,8 +118,15 @@ public class SeaPancakeEntity extends WaterAnimal {
 		return SoundEvents.COD_FLOP;
 	}
 
-	protected PathNavigation createNavigation(Level p_27480_) {
-		return new WaterBoundPathNavigation(this, p_27480_);
+
+	@Override
+	public void playerTouch(Player entity) {
+		super.playerTouch(entity);
+		if (!entity.isCreative() && this.attackCooldown == 0 && entity.level.getDifficulty() != Difficulty.PEACEFUL) {
+			entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3, false, false));
+			entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 2, false, false));
+			this.attackCooldown = 80;
+		}
 	}
 
 	public static boolean canSpawn(EntityType<SeaPancakeEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random ) {

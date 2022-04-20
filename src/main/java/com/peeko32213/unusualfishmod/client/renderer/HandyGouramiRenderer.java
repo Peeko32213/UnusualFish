@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.HandyGouramiModel;
+import com.peeko32213.unusualfishmod.client.model.HandyGouramiModel;
 import com.peeko32213.unusualfishmod.common.entity.HandyGouramiEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class HandyGouramiRenderer extends MobRenderer<HandyGouramiEntity, HandyGouramiModel<HandyGouramiEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/handygourami.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/handygourami.png");
 
 	public HandyGouramiRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new HandyGouramiModel<>(renderManagerIn.bakeLayer(HandyGouramiModel.LAYER_LOCATION)), 0.2F);

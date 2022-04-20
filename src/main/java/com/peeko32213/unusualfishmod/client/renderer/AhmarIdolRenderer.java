@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.AhmarIdolModel;
+import com.peeko32213.unusualfishmod.client.model.AhmarIdolModel;
 import com.peeko32213.unusualfishmod.common.entity.AhmarIdolEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class AhmarIdolRenderer extends MobRenderer<AhmarIdolEntity, AhmarIdolModel<AhmarIdolEntity>> {
-    protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/ahmaridol.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/ahmaridol.png");
 
     public AhmarIdolRenderer(EntityRendererProvider.Context renderManagerIn) {
         super(renderManagerIn, new AhmarIdolModel<>(renderManagerIn.bakeLayer(AhmarIdolModel.LAYER_LOCATION)), 0.2F);

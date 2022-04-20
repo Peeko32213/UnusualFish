@@ -1,6 +1,6 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:items/pig_bucket"
+    "layer0" : "unusualfishmod:item/pig_bucket"
   }
 }

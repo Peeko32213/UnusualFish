@@ -1,7 +1,7 @@
 package com.peeko32213.unusualfishmod.common.entity;
 
 
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
 
 
 import net.minecraft.core.BlockPos;
@@ -144,7 +144,7 @@ public class SeaSpiderEntity extends WaterAnimal implements Bucketable{
 
 	@Override
 	public ItemStack getBucketItemStack() {
-		return new ItemStack(Iteminit.SEA_SPIDER_BUCKET.get());
+		return new ItemStack(ItemInit.SEA_SPIDER_BUCKET.get());
 	}
 
 	static class MoveHelperController extends MoveControl {

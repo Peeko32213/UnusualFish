@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.ZebraCornetfishModel;
+import com.peeko32213.unusualfishmod.client.model.ZebraCornetfishModel;
 import com.peeko32213.unusualfishmod.common.entity.ZebraCornetfishEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class ZebraCornetfishRenderer extends MobRenderer<ZebraCornetfishEntity, ZebraCornetfishModel<ZebraCornetfishEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/zebracornetfish.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/zebracornetfish.png");
 
 	public ZebraCornetfishRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new ZebraCornetfishModel<>(renderManagerIn.bakeLayer(ZebraCornetfishModel.LAYER_LOCATION)), 0.2F);

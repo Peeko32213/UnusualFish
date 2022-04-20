@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.DualityDamselfishModel;
+import com.peeko32213.unusualfishmod.client.model.DualityDamselfishModel;
 import com.peeko32213.unusualfishmod.common.entity.DualityDamselfishEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class DualityDamselfishRenderer extends MobRenderer<DualityDamselfishEntity, DualityDamselfishModel<DualityDamselfishEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/dualitydamsel.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/dualitydamsel.png");
 
 	public DualityDamselfishRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new DualityDamselfishModel<>(renderManagerIn.bakeLayer(DualityDamselfishModel.LAYER_LOCATION)), 0.2F);

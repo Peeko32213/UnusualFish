@@ -24,8 +24,8 @@ public class CommonModEvents {
 			SpawnPlacements.register(EntityInit.AHMAR_IDOL.get(), SpawnPlacements.Type.IN_WATER,
 					Heightmap.Types.WORLD_SURFACE, AhmarIdolEntity::canSpawn);
 
-			SpawnPlacements.register(EntityInit.BARBED_SKATE.get(), SpawnPlacements.Type.IN_WATER,
-					Heightmap.Types.OCEAN_FLOOR, BarbedSkateEntity::canSpawn);
+			SpawnPlacements.register(EntityInit.THORNY_GUITARFISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, ThornyGuitarfishEntity::canSpawn);
 
 			SpawnPlacements.register(EntityInit.CLOWNTHORN_SHARK.get(), SpawnPlacements.Type.IN_WATER,
 					Heightmap.Types.WORLD_SURFACE, ClownthornSharkEntity::canSpawn);
@@ -114,6 +114,70 @@ public class CommonModEvents {
 			SpawnPlacements.register(EntityInit.THORN_SNAIL.get(), SpawnPlacements.Type.IN_WATER,
 					Heightmap.Types.OCEAN_FLOOR, ThornySnailEntity::canSpawn);
 
+			//New Stuff
+
+			SpawnPlacements.register(EntityInit.BEAKED_HERRING.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, BeakedHerringEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.PICKLEFISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, PicklefishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.CAVE_LOACH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, CaveLoachEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.DEMON_HERRING.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, DemonHerringEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.YELLOW_GOBY.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, YellowWhipGobyEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.FALSE_SWORD.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, FalseSwordfishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.COPPERFLAME.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, CopperflameAnthiasEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.POGGLING.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, HumpbackPogglingEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.GRAVEL_FLOUNDER.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, GravelFlounderEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.ROOTBALL.get(), SpawnPlacements.Type.ON_GROUND,
+					Heightmap.Types.WORLD_SURFACE, RootballEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.CELESTIAL_FISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, CelestialFishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.GNASHER.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, GnasherEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.DEPTH_PRAWN.get(), SpawnPlacements.Type.ON_GROUND,
+					Heightmap.Types.WORLD_SURFACE, DepthPrawnEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.SQUODDLE.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, SquoddleEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.SEA_MOSQUITO.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, SeaMosquitoEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.FORKFISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, ForkfishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.SPOON_SHARK.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, SpoonSharkEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.CORAL_SKRIMP.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.OCEAN_FLOOR, CoralSkrimpEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.SKATE_SQUID.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, SkateSquidEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.CIRCUSFISH.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, CircusFishEntity::canSpawn);
+
+			SpawnPlacements.register(EntityInit.BLIZZARDFIN.get(), SpawnPlacements.Type.IN_WATER,
+					Heightmap.Types.WORLD_SURFACE, BlizzardfinTunaEntity::canSpawn);
 		});
 
 	}
@@ -143,7 +207,7 @@ public class CommonModEvents {
 
 		event.put(EntityInit.CLOWNTHORN_SHARK.get(), ClownthornSharkEntity.createAttributes().build());
 
-		event.put(EntityInit.BARBED_SKATE.get(), BarbedSkateEntity.createAttributes().build());
+		event.put(EntityInit.THORNY_GUITARFISH.get(), ThornyGuitarfishEntity.createAttributes().build());
 
 		event.put(EntityInit.REDGIANT_SEASTAR.get(), RedGiantSeaStarEntity.createAttributes().build());
 
@@ -184,6 +248,55 @@ public class CommonModEvents {
 		event.put(EntityInit.LOBED_SKIPPER.get(), LobedSkipperEntity.createAttributes().build());
 
 		event.put(EntityInit.DRAGON_BICHIR.get(), DragonBichirEntity.createAttributes().build());
+
+		//New Stuff
+
+		event.put(EntityInit.BEAKED_HERRING.get(), BeakedHerringEntity.createAttributes().build());
+
+		event.put(EntityInit.PICKLEFISH.get(), PicklefishEntity.createAttributes().build());
+
+		event.put(EntityInit.CAVE_LOACH.get(), CaveLoachEntity.createAttributes().build());
+
+		event.put(EntityInit.DEMON_HERRING.get(), DemonHerringEntity.createAttributes().build());
+
+		event.put(EntityInit.YELLOW_GOBY.get(), YellowWhipGobyEntity.createAttributes().build());
+
+		event.put(EntityInit.HATCHET_FISH.get(), HatchetFishEntity.createAttributes().build());
+
+		event.put(EntityInit.FALSE_SWORD.get(), FalseSwordfishEntity.createAttributes().build());
+
+		event.put(EntityInit.COPPERFLAME.get(), CopperflameAnthiasEntity.createAttributes().build());
+
+		event.put(EntityInit.POGGLING.get(), HumpbackPogglingEntity.createAttributes().build());
+
+		event.put(EntityInit.GRAVEL_FLOUNDER.get(), GravelFlounderEntity.createAttributes().build());
+
+		event.put(EntityInit.ROOTBALL.get(), RootballEntity.createAttributes().build());
+
+		event.put(EntityInit.CELESTIAL_FISH.get(), CelestialFishEntity.createAttributes().build());
+
+		event.put(EntityInit.GNASHER.get(), GnasherEntity.createAttributes().build());
+
+		event.put(EntityInit.DEPTH_PRAWN.get(), DepthPrawnEntity.createAttributes().build());
+
+		event.put(EntityInit.SQUODDLE.get(), SquoddleEntity.createAttributes().build());
+
+		event.put(EntityInit.SEA_MOSQUITO.get(), SeaMosquitoEntity.createAttributes().build());
+
+		event.put(EntityInit.FORKFISH.get(), ForkfishEntity.createAttributes().build());
+
+		event.put(EntityInit.SPOON_SHARK.get(), SpoonSharkEntity.createAttributes().build());
+
+		event.put(EntityInit.CORAL_SKRIMP.get(), CoralSkrimpEntity.createAttributes().build());
+
+		event.put(EntityInit.SKATE_SQUID.get(), SkateSquidEntity.createAttributes().build());
+
+		event.put(EntityInit.CIRCUSFISH.get(), CircusFishEntity.createAttributes().build());
+
+		event.put(EntityInit.BLIZZARDFIN.get(), BlizzardfinTunaEntity.createAttributes().build());
+
+		event.put(EntityInit.WHISKERED.get(), WhiskeredWhaleSharkEntity.createAttributes().build());
+
 	}
 
 }

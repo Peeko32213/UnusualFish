@@ -1,29 +1,29 @@
 
-modLoader="javafml" 
-loaderVersion="[39,)"
+modLoader="javafml"
+loaderVersion="[40,)"
 license="MIT"
 
 [[mods]] 
 modId="unusualfishmod" 
-version="0.2.3"
+version="0.2.4-beta-2"
 displayName= "Unusual Fish Mod"
 logoFile= "examplemod.png"
-credits= "Thanks to Birdbasket and rusty_coconut for textures! Thanks to HugoMage for helping with code!"
+credits= "Thanks to Birdbasket, rusty_coconut, NotBop, Crydigo, and Circle Fish for textures! Thanks to HugoMage for helping with code!"
 authors= "Peeko32213"
 description='''
-A mod that adds a variety of new aquatic creatures and potion affects based around them.
+A mod that adds a variety of new aquatic creatures, both useful and atheistic!
 '''
 
 [[dependencies.examplemod]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.examplemod]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"

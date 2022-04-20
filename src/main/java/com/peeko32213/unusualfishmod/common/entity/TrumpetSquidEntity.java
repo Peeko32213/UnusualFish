@@ -4,6 +4,7 @@ package com.peeko32213.unusualfishmod.common.entity;
 
 import com.peeko32213.unusualfishmod.common.entity.util.WaterMoveController;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
@@ -17,15 +18,15 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.TropicalFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -41,20 +42,35 @@ public class TrumpetSquidEntity extends WaterAnimal {
 
 	public TrumpetSquidEntity(EntityType<? extends TrumpetSquidEntity> entityType, Level level) {
 		super(entityType, level);
-		this.moveControl = new MoveHelperController(this);
+		this.moveControl = new TrumpetSquidEntity.MoveHelperController(this);
+		this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
+		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 12).add(Attributes.ATTACK_DAMAGE, 2).add(Attributes.ARMOR, (double) 12.0D);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 15.0D).add(Attributes.ATTACK_DAMAGE, 2.0D).add(Attributes.ARMOR, 10.0D);
 	}
 
 	@Override
 	public void registerGoals() {
 		super.registerGoals();
+		this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 3.0D, true));
 		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, BrickSnailEntity.class, true));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, BlackCapSnailEntity.class, true));
-		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 0.8D, 1));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractFish.class, false));
+		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
+		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 0.8D, 1) {
+			@Override
+			public boolean canUse() {
+				return super.canUse() && isInWater();
+			}
+		});
+		this.goalSelector.addGoal(2, new RandomStrollGoal(this, 0.8D, 15) {
+			@Override
+			public boolean canUse() {
+				return !this.mob.isInWater() && super.canUse();
+			}
+		});
 	}
 
 	public void aiStep() {
@@ -148,6 +164,19 @@ public class TrumpetSquidEntity extends WaterAnimal {
 		}
 
 	}
+
+	public void tick() {
+		super.tick();
+
+		if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
+			Vec3 vec3 = this.getViewVector(0.0F);
+			float f = Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+			float f1 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+
+		}
+
+	}
+
 
 	public static boolean canSpawn(EntityType<TrumpetSquidEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random ) {
 		return WaterAnimal.checkSurfaceWaterAnimalSpawnRules(entity, levelAccess, spawnType, pos, random);

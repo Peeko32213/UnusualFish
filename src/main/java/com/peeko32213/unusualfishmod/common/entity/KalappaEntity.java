@@ -2,6 +2,7 @@ package com.peeko32213.unusualfishmod.common.entity;
 
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
 
@@ -66,6 +68,10 @@ public class KalappaEntity extends PathfinderMob  {
         if (this.attackCooldown > 0) {
             this.attackCooldown--;
         }
+    }
+
+    protected void playStepSound(BlockPos p_33804_, BlockState p_33805_) {
+        this.playSound(SoundEvents.SPIDER_STEP, 0.15F, 1.0F);
     }
 
     public static boolean canSpawn(EntityType<KalappaEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random ) {

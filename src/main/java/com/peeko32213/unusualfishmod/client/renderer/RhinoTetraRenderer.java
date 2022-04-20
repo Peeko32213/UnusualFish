@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.RhinoTetraModel;
+import com.peeko32213.unusualfishmod.client.model.RhinoTetraModel;
 import com.peeko32213.unusualfishmod.common.entity.RhinoTetraEntity;
 
 
@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class RhinoTetraRenderer extends MobRenderer<RhinoTetraEntity, RhinoTetraModel<RhinoTetraEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/rhinotetra.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/rhinotetra.png");
 
 	public RhinoTetraRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new RhinoTetraModel<>(renderManagerIn.bakeLayer(RhinoTetraModel.LAYER_LOCATION)), 0.2F);

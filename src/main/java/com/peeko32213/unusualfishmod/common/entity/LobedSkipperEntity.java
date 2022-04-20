@@ -1,6 +1,6 @@
 package com.peeko32213.unusualfishmod.common.entity;
 
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -34,7 +34,7 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class LobedSkipperEntity extends PathfinderMob implements Bucketable {
-    private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(FreshwaterMantisEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(LobedSkipperEntity.class, EntityDataSerializers.BOOLEAN);
 
     public  LobedSkipperEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -343,9 +343,10 @@ public class LobedSkipperEntity extends PathfinderMob implements Bucketable {
     protected InteractionResult mobInteract(Player p_27477_, InteractionHand p_27478_) {
         return Bucketable.bucketMobPickup(p_27477_, p_27478_, this).orElse(super.mobInteract(p_27477_, p_27478_));
     }
+
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(Iteminit.SKIPPER_BUCKET.get());
+        return new ItemStack(ItemInit.SKIPPER_BUCKET.get());
     }
 
     protected SoundEvent getJumpSound() {

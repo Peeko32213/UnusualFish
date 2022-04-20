@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.SailorBarbModel;
+import com.peeko32213.unusualfishmod.client.model.SailorBarbModel;
 import com.peeko32213.unusualfishmod.common.entity.SailorBarbEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class SailorBarbRenderer extends MobRenderer<SailorBarbEntity, SailorBarbModel<SailorBarbEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/sailorbarb.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/sailorbarb.png");
 
 	public SailorBarbRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new SailorBarbModel<>(renderManagerIn.bakeLayer(SailorBarbModel.LAYER_LOCATION)), 0.2F);

@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.common.entity;
 
 
 import com.peeko32213.unusualfishmod.common.entity.util.SemiAquatic;
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -27,16 +27,13 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Bucketable;
-import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Silverfish;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 
 import java.util.Random;
 
@@ -184,7 +181,7 @@ public class FreshwaterMantisEntity extends WaterAnimal implements Bucketable, S
 	}
 	@Override
 	public ItemStack getBucketItemStack() {
-		return new ItemStack(Iteminit.MANTIS_BUCKET.get());
+		return new ItemStack(ItemInit.MANTIS_BUCKET.get());
 	}
 
 	@Override

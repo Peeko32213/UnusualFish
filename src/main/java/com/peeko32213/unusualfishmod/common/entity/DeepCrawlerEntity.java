@@ -1,7 +1,7 @@
 package com.peeko32213.unusualfishmod.common.entity;
 
 
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -34,7 +34,6 @@ import java.util.Random;
 
 public class DeepCrawlerEntity extends WaterAnimal implements Bucketable{
 	private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(DeepCrawlerEntity.class, EntityDataSerializers.BOOLEAN);
-
 
 	public DeepCrawlerEntity(EntityType<? extends DeepCrawlerEntity> type, Level world) {
 		super(type, world);
@@ -138,7 +137,7 @@ public class DeepCrawlerEntity extends WaterAnimal implements Bucketable{
 
 	@Override
 	public ItemStack getBucketItemStack() {
-		return new ItemStack(Iteminit.DEEP_BUCKET.get());
+		return new ItemStack(ItemInit.DEEP_BUCKET.get());
 	}
 
 

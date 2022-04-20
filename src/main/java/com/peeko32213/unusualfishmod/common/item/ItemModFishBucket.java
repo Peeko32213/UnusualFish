@@ -2,9 +2,12 @@ package com.peeko32213.unusualfishmod.common.item;
 
 import java.util.function.Supplier;
 
+import com.peeko32213.unusualfishmod.UnusualFishMod;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
@@ -24,7 +27,9 @@ import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.DistExecutor;
 
 public class ItemModFishBucket extends BucketItem {
 	private final boolean hasTooltip;
@@ -38,6 +43,8 @@ public class ItemModFishBucket extends BucketItem {
 		this.hasTooltip = hasTooltip;
 		this.entityTypeSupplier = entityType;
 		this.item = item;
+		DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> () -> UnusualFishMod.CALLBACKS.add(() -> ItemProperties.register(this, new ResourceLocation(UnusualFishMod.MODID, "variant"), (stack, world, player, i) -> stack.hasTag() ? stack.getTag().getInt("Variant") : 0)));
+
 	}
 
 	@Override

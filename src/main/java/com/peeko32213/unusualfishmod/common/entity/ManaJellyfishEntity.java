@@ -1,94 +1,193 @@
 package com.peeko32213.unusualfishmod.common.entity;
 
+import com.peeko32213.unusualfishmod.common.entity.util.FollowSchoolLeaderGoal;
+import com.peeko32213.unusualfishmod.common.entity.util.SchoolingWaterAnimal;
 import com.peeko32213.unusualfishmod.common.entity.util.WaterMoveController;
-import com.peeko32213.unusualfishmod.core.init.Iteminit;
+import com.peeko32213.unusualfishmod.core.init.ItemInit;
+import net.minecraft.client.model.DolphinModel;
+import net.minecraft.client.renderer.entity.DolphinRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.animal.AbstractSchoolingFish;
-import net.minecraft.world.entity.animal.Cod;
-import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
 
-public class ManaJellyfishEntity extends AbstractSchoolingFish {
-
+//REMOVE TILT FROM
+public class ManaJellyfishEntity extends SchoolingWaterAnimal implements Bucketable {
+    private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(ManaJellyfishEntity.class, EntityDataSerializers.BOOLEAN);
     protected int attackCooldown = 0;
+    private boolean isSchool = true;
 
-    public ManaJellyfishEntity(EntityType<? extends AbstractSchoolingFish> entityType, Level level) {
+
+    public ManaJellyfishEntity(EntityType<? extends SchoolingWaterAnimal> entityType, Level level) {
         super(entityType, level);
-        this.moveControl = new WaterMoveController(this, 1F);
+        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-        this.maxUpStep = 0.5f;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.ATTACK_DAMAGE, 2.0D);
     }
 
     protected void registerGoals() {
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
-        this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 1.0D, 1) {
+        this.goalSelector.addGoal(4, new FollowSchoolLeaderGoal(this));
+        this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 0.8D, 1) {
             @Override
             public boolean canUse() {
                 return super.canUse() && isInWater();
             }
         });
-        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1.0D, 15) {
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 0.8D, 15) {
             @Override
             public boolean canUse() {
                 return !this.mob.isInWater() && super.canUse();
             }
         });
+    }
+
+    //Squid Games
+
+    public void tick() {
+        super.tick();
+
+            if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
+                Vec3 vec3 = this.getViewVector(0.0F);
+                float f = Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+                float f1 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
+            }
+
+        }
+
+
+    public void aiStep() {
+        if (!this.isInWater() && this.onGround && this.verticalCollision) {
+            this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double)0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
+            this.onGround = false;
+            this.hasImpulse = true;
+            this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
+        }
+
+        super.aiStep();
+    }
+
+    protected PathNavigation createNavigation(Level p_27480_) {
+        return new WaterBoundPathNavigation(this, p_27480_);
+    }
+
+    //Squid Games
+
+    public int getMaxSpawnClusterSize() {
+        return 5;
+    }
+
+    public boolean isMaxGroupSizeReached(int p_30035_) {
+        return !this.isSchool;
+    }
+
+    public int getMaxSchoolSize() {
+        return 10;
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(FROM_BUCKET, false);
+    }
+
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("Bucketed", this.fromBucket());
+    }
+
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.setFromBucket(compound.getBoolean("Bucketed"));
+    }
+
+    @Override
+    public boolean fromBucket() {
+        return this.entityData.get(FROM_BUCKET);
+    }
+
+    @Override
+    public void setFromBucket(boolean bucketed) {
+        this.entityData.set(FROM_BUCKET, bucketed);
+    }
+
+    @Override
+    public void saveToBucketTag(ItemStack bucket) {
+        CompoundTag compoundnbt = bucket.getOrCreateTag();
+        compoundnbt.putFloat("Health", this.getHealth());
 
     }
 
-    protected boolean canRandomSwim() {
-        return true;
+    public boolean requiresCustomPersistence() {
+        return super.requiresCustomPersistence() || this.fromBucket();
     }
 
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.COD_AMBIENT;
+
+    @Override
+    public void loadFromBucketTag(CompoundTag p_148832_) {
+
     }
 
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.COD_DEATH;
+    @Override
+    public SoundEvent getPickupSound() {
+        return SoundEvents.BUCKET_EMPTY_FISH;
     }
 
-    protected SoundEvent getHurtSound(DamageSource p_28281_) {
-        return SoundEvents.COD_HURT;
-    }
-
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.COD_FLOP;
+    protected InteractionResult mobInteract(Player p_27477_, InteractionHand p_27478_) {
+        return Bucketable.bucketMobPickup(p_27477_, p_27478_, this).orElse(super.mobInteract(p_27477_, p_27478_));
     }
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(Iteminit.WIZARD_BUCKET.get());
+        return new ItemStack(ItemInit.WIZARD_BUCKET.get());
+    }
+
+    public SoundEvent getFlopSound() {
+        return SoundEvents.COD_FLOP;
     }
 
     @Override
@@ -109,6 +208,10 @@ public class ManaJellyfishEntity extends AbstractSchoolingFish {
         float time = iServerWorld.getTimeOfDay(1.0F);
         int light = iServerWorld.getMaxLocalRawBrightness(pos);
         return light <= 4 && time > 0.27F && time <= 0.8F;
+    }
+
+    public boolean checkSpawnObstruction(LevelReader worldIn) {
+        return worldIn.isUnobstructed(this);
     }
 
 }

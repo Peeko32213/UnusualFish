@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=east": { "model": "unusualfishmod:block/jellyfish_torch" },
+    "facing=south": { "model": "unusualfishmod:block/jellyfish_torch", "y": 90 },
+    "facing=west": { "model": "unusualfishmod:block/jellyfish_torch", "y": 180 },
+    "facing=north": { "model": "unusualfishmod:block/jellyfish_torch", "y": 270 }
+  }
+}

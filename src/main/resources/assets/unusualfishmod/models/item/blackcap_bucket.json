@@ -1,6 +1,6 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:items/blackcap_snail_bucket"
+    "layer0" : "unusualfishmod:item/blackcap_snail_bucket"
   }
 }

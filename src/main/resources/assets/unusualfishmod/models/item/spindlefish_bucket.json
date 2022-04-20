@@ -1,6 +1,6 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:items/spindle_bucket"
+    "layer0" : "unusualfishmod:item/spindle_bucket"
   }
 }

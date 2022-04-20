@@ -1,8 +1,8 @@
 package com.peeko32213.unusualfishmod.client.event;
 
 import com.peeko32213.unusualfishmod.UnusualFishMod;
+import com.peeko32213.unusualfishmod.client.model.*;
 import com.peeko32213.unusualfishmod.client.renderer.*;
-import com.peeko32213.unusualfishmod.client.renderer.model.*;
 import com.peeko32213.unusualfishmod.core.init.EntityInit;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,7 +30,7 @@ public final class ClientModEvents {
 			event.registerLayerDefinition(TripleTwirlPlecoModel.LAYER_LOCATION, TripleTwirlPlecoModel::createBodyLayer);
 			event.registerLayerDefinition(AeroMonoModel.LAYER_LOCATION, AeroMonoModel::createBodyLayer);
 			event.registerLayerDefinition(ClownthornSharkModel.LAYER_LOCATION, ClownthornSharkModel::createBodyLayer);
-			event.registerLayerDefinition(BarbedSkateModel.LAYER_LOCATION, BarbedSkateModel::createBodyLayer);
+			event.registerLayerDefinition(ThornyGuitarfishModel.LAYER_LOCATION, ThornyGuitarfishModel::createBodyLayer);
 			event.registerLayerDefinition(RedGiantSeaStarModel.LAYER_LOCATION, RedGiantSeaStarModel::createBodyLayer);
 			event.registerLayerDefinition(AhmarIdolModel.LAYER_LOCATION, AhmarIdolModel::createBodyLayer);
 			event.registerLayerDefinition(MudPigModel.LAYER_LOCATION, MudPigModel::createBodyLayer);
@@ -52,7 +52,31 @@ public final class ClientModEvents {
 			event.registerLayerDefinition(LobedSkipperModel.LAYER_LOCATION, LobedSkipperModel::createBodyLayer);
 			event.registerLayerDefinition(DragonBichirModel.LAYER_LOCATION, DragonBichirModel::createBodyLayer);
 
-			
+			//Newest Version
+			event.registerLayerDefinition(BeakedHerringModel.LAYER_LOCATION, BeakedHerringModel::createBodyLayer);
+			event.registerLayerDefinition(PicklefishModel.LAYER_LOCATION, PicklefishModel::createBodyLayer);
+			event.registerLayerDefinition(CaveLoachModel.LAYER_LOCATION, CaveLoachModel::createBodyLayer);
+			event.registerLayerDefinition(DemonHerringModel.LAYER_LOCATION, DemonHerringModel::createBodyLayer);
+			event.registerLayerDefinition(YellowWhipGobyModel.LAYER_LOCATION, YellowWhipGobyModel::createBodyLayer);
+			event.registerLayerDefinition(HatchetFishModel.LAYER_LOCATION, HatchetFishModel::createBodyLayer);
+			event.registerLayerDefinition(FalseSwordfishModel.LAYER_LOCATION, FalseSwordfishModel::createBodyLayer);
+			event.registerLayerDefinition(CopperflameAnthiasModel.LAYER_LOCATION, CopperflameAnthiasModel::createBodyLayer);
+			event.registerLayerDefinition(HumpbackPogglingModel.LAYER_LOCATION, HumpbackPogglingModel::createBodyLayer);
+			event.registerLayerDefinition(GravelFlounderModel.LAYER_LOCATION, GravelFlounderModel::createBodyLayer);
+			event.registerLayerDefinition(RootballModel.LAYER_LOCATION, RootballModel::createBodyLayer);
+			event.registerLayerDefinition(CelestialFishModel.LAYER_LOCATION, CelestialFishModel::createBodyLayer);
+			event.registerLayerDefinition(GnasherModel.LAYER_LOCATION, GnasherModel::createBodyLayer);
+			event.registerLayerDefinition(DepthPrawnModel.LAYER_LOCATION, DepthPrawnModel::createBodyLayer);
+			event.registerLayerDefinition(SquoddleModel.LAYER_LOCATION, SquoddleModel::createBodyLayer);
+			event.registerLayerDefinition(SeaMosquitoModel.LAYER_LOCATION, SeaMosquitoModel::createBodyLayer);
+			event.registerLayerDefinition(ForkfishModel.LAYER_LOCATION, ForkfishModel::createBodyLayer);
+			event.registerLayerDefinition(SpoonSharkModel.LAYER_LOCATION, SpoonSharkModel::createBodyLayer);
+			event.registerLayerDefinition(CoralSkrimpModel.LAYER_LOCATION, CoralSkrimpModel::createBodyLayer);
+			event.registerLayerDefinition(SkateSquidModel.LAYER_LOCATION, SkateSquidModel::createBodyLayer);
+			event.registerLayerDefinition(CircusFishModel.LAYER_LOCATION, CircusFishModel::createBodyLayer);
+			event.registerLayerDefinition(BlizzardfinTunaModel.LAYER_LOCATION, BlizzardfinTunaModel::createBodyLayer);
+			event.registerLayerDefinition(WhiskeredWhaleSharkModel.LAYER_LOCATION, WhiskeredWhaleSharkModel::createBodyLayer);
+
 		}
 		
 		@SubscribeEvent
@@ -68,7 +92,7 @@ public final class ClientModEvents {
 			event.registerEntityRenderer(EntityInit.TRIPLE_TWIRL_PLECO.get(), TripleTwirlPlecoRenderer::new);
 			event.registerEntityRenderer(EntityInit.AERO_MONO.get(), AeroMonoRenderer::new);
 			event.registerEntityRenderer(EntityInit.CLOWNTHORN_SHARK.get(), ClownthornSharkRenderer::new);
-			event.registerEntityRenderer(EntityInit.BARBED_SKATE.get(), BarbedSkateRenderer::new);
+			event.registerEntityRenderer(EntityInit.THORNY_GUITARFISH.get(), ThornyGuitarfishRenderer::new);
 			event.registerEntityRenderer(EntityInit.REDGIANT_SEASTAR.get(), RedGiantSeaStarRenderer::new);
 			event.registerEntityRenderer(EntityInit.AHMAR_IDOL.get(), AhmarIdolRenderer::new);
 			event.registerEntityRenderer(EntityInit.MUD_PIG.get(), MudPigRenderer::new);
@@ -89,6 +113,31 @@ public final class ClientModEvents {
 			event.registerEntityRenderer(EntityInit.KALAPPA.get(), KalappaRenderer::new);
 			event.registerEntityRenderer(EntityInit.LOBED_SKIPPER.get(), LobedSkipperRenderer::new);
 			event.registerEntityRenderer(EntityInit.DRAGON_BICHIR.get(), DragonBichirRenderer::new);
+
+			//Newest Version
+			event.registerEntityRenderer(EntityInit.BEAKED_HERRING.get(), BeakedHerringRenderer::new);
+			event.registerEntityRenderer(EntityInit.PICKLEFISH.get(), PicklefishRenderer::new);
+			event.registerEntityRenderer(EntityInit.CAVE_LOACH.get(), CaveLoachRenderer::new);
+			event.registerEntityRenderer(EntityInit.DEMON_HERRING.get(), DemonHerringRenderer::new);
+			event.registerEntityRenderer(EntityInit.YELLOW_GOBY.get(), YellowWhipGobyRenderer::new);
+			event.registerEntityRenderer(EntityInit.HATCHET_FISH.get(), HatchetfishRenderer::new);
+			event.registerEntityRenderer(EntityInit.FALSE_SWORD.get(), FalseSwordfishRenderer::new);
+			event.registerEntityRenderer(EntityInit.COPPERFLAME.get(), CopperflameAnthiasRenderer::new);
+			event.registerEntityRenderer(EntityInit.POGGLING.get(), HumpbackPogglingRenderer::new);
+			event.registerEntityRenderer(EntityInit.GRAVEL_FLOUNDER.get(), GravelFlounderRenderer::new);
+			event.registerEntityRenderer(EntityInit.ROOTBALL.get(), RootballRenderer::new);
+			event.registerEntityRenderer(EntityInit.CELESTIAL_FISH.get(), CelestialFishRenderer::new);
+			event.registerEntityRenderer(EntityInit.GNASHER.get(), GnasherRenderer::new);
+			event.registerEntityRenderer(EntityInit.DEPTH_PRAWN.get(), DepthPrawnRenderer::new);
+			event.registerEntityRenderer(EntityInit.SQUODDLE.get(), SquoddleRenderer::new);
+			event.registerEntityRenderer(EntityInit.SEA_MOSQUITO.get(), SeaMosquitoRenderer::new);
+			event.registerEntityRenderer(EntityInit.FORKFISH.get(), ForkfishRenderer::new);
+			event.registerEntityRenderer(EntityInit.SPOON_SHARK.get(), SpoonSharkRenderer::new);
+			event.registerEntityRenderer(EntityInit.CORAL_SKRIMP.get(), CoralSkrimpRenderer::new);
+			event.registerEntityRenderer(EntityInit.SKATE_SQUID.get(), SkateSquidRenderer::new);
+			event.registerEntityRenderer(EntityInit.CIRCUSFISH.get(), CircusFishRenderer::new);
+			event.registerEntityRenderer(EntityInit.BLIZZARDFIN.get(), BlizzardfinTunaRenderer::new);
+			event.registerEntityRenderer(EntityInit.WHISKERED.get(), WhiskeredWhaleSharkRenderer::new);
 
 		}
 }

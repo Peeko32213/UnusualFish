@@ -2,9 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.AeroMonoModel;
-import com.peeko32213.unusualfishmod.client.renderer.model.BarkAngelfishModel;
-import com.peeko32213.unusualfishmod.common.entity.AeroMonoEntity;
+import com.peeko32213.unusualfishmod.client.model.BarkAngelfishModel;
 import com.peeko32213.unusualfishmod.common.entity.BarkAngelfishEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -12,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class BarkAngelfishRenderer extends MobRenderer<BarkAngelfishEntity, BarkAngelfishModel<BarkAngelfishEntity>> {
-    protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/barkangelfish.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/barkangelfish.png");
 
     public BarkAngelfishRenderer(EntityRendererProvider.Context renderManagerIn) {
         super(renderManagerIn, new BarkAngelfishModel<>(renderManagerIn.bakeLayer(BarkAngelfishModel.LAYER_LOCATION)), 0.2F);

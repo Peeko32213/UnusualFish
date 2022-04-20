@@ -2,7 +2,7 @@ package com.peeko32213.unusualfishmod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.peeko32213.unusualfishmod.client.renderer.model.MossthornModel;
+import com.peeko32213.unusualfishmod.client.model.MossthornModel;
 import com.peeko32213.unusualfishmod.common.entity.MossthornEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class MossthornRenderer extends MobRenderer<MossthornEntity, MossthornModel<MossthornEntity>> {
-	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entities/mossthorn.png");
+	protected static final ResourceLocation TEXTURE = new ResourceLocation("unusualfishmod:textures/entity/mossthorn.png");
 
 	public MossthornRenderer(EntityRendererProvider.Context renderManagerIn) {
 		super(renderManagerIn, new MossthornModel<>(renderManagerIn.bakeLayer(MossthornModel.LAYER_LOCATION)), 0.2F);

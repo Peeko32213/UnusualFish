@@ -1,6 +1,7 @@
 {
   "parent" : "item/generated",
   "textures" : {
-    "layer0" : "unusualfishmod:item/blind_bucket"
+    "layer0" : "unusualfishmod:item/lower_bucket",
+    "layer1" : "unusualfishmod:item/bucket_content/cave_loach"
   }
 }
